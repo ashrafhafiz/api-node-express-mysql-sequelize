@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/table.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Inventory</title>
+  </head>
+  <body>
+    <div class="h-screen w-screen flex bg-gray-200">
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      />
+
+      <div class="min-h-screen flex flex-row bg-gray-100 border-r">
+        <div class="flex flex-col w-56 bg-white overflow-hidden">
+          <div class="flex items-center justify-center h-20 shadow-md">
+            <h1 class="text-3xl uppercase text-indigo-500">LIBRARY</h1>
+          </div>
+          <ul class="flex flex-col py-4">
+            <li>
+              <a
+                href="./book.html"
+                class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+              >
+                <span
+                  class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
+                  ><i class="bx bx-home"></i
+                ></span>
+                <span class="text-sm font-medium">Books</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="./assign.html"
+                class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+              >
+                <span
+                  class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"
+                    />
+                  </svg>
+                </span>
+                <span class="text-sm font-medium">Assign Books</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="./user.html"
+                class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+              >
+                <span
+                  class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
+                  ><i class="bx bx-user"></i
+                ></span>
+                <span class="text-sm font-medium">Users</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="bg-white p-8 w-full object-center">
+        <div class="flex items-center justify-between pb-6">
+          <div>
+            <h2 class="text-gray-600 font-semibold">ALL BOOKS</h2>
+          </div>
+
+          <div class="flex items-center justify-between">
+            <div class="lg:ml-40 ml-10 space-x-8">
+              <button
+                id="add-book"
+                class="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer"
+              >
+                ADD NEW BOOK
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+            <div
+              class="inline-block min-w-full shadow rounded-lg overflow-hidden"
+            >
+              <table id="book-table" class="min-w-full leading-normal">
+                <thead>
+                  <tr>
+                    <th
+                      class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+                    >
+                      BOOK ID
+                    </th>
+                    <th
+                      class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+                    >
+                      BOOK NAME
+                    </th>
+                    <th
+                      class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+                    >
+                      AUTHOR NAME
+                    </th>
+                    <th
+                      class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+                    >
+                      DESCRIPTION
+                    </th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div
+          id="modal"
+          class="flex justify-center h-150 w-100 items-center antialiased h-20 hidden"
+        >
+          <div
+            class="flex flex-col w-11/12 sm:w-4/5 lg:w-1/2 max-w-2xl mx-auto rounded-lg shadow-xl"
+          >
+            <div
+              class="flex flex-row justify-between p-6 bg-white border-b border-gray-200 rounded-tl-lg rounded-tr-lg"
+            >
+              <p class="font-semibold text-gray-800">Add Book</p>
+              <svg
+                id="cancel-button"
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                ></path>
+              </svg>
+            </div>
+            <div class="flex flex-col px-6 py-5 bg-gray-50">
+              <p class="mb-2 font-semibold text-gray-700">Enter details:</p>
+              <input
+                type="text"
+                class="p-5 mb-5 bg-white border border-gray-200 rounded shadow-sm h-10"
+                placeholder="Enter Book Name"
+                id="title"
+              />
+              <input
+                type="text"
+                class="p-5 mb-5 bg-white border border-gray-200 rounded shadow-sm h-10"
+                placeholder="Enter Author Name"
+                id="author"
+              />
+              <input
+                type="text"
+                class="p-5 mb-5 bg-white border border-gray-200 rounded shadow-sm h-10"
+                placeholder="Enter Description"
+                id="description"
+              />
+              <hr />
+            </div>
+            <div
+              class="flex flex-row items-center justify-between p-5 bg-white border-t border-gray-200 rounded-bl-lg rounded-br-lg"
+            >
+              <button
+                id="save-btn"
+                class="px-4 py-2 text-white font-semibold bg-blue-500 rounded"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./js/book.js"></script>
+  </body>
+</html>
